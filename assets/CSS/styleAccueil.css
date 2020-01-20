@@ -1,0 +1,82 @@
+body{
+    background-image:url(terrainDeFoot.jpg);
+    background-size: 100%;
+}
+
+img{
+    width: 10%;
+    height: auto;
+    display: block;
+    position: absolute;
+    size: 100%;
+}
+
+h1{
+    text-align: center;
+    background-color: blue;
+}
+
+nav {
+    margin: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 0 10%;
+    padding-top: 0px;
+    padding-right: 10%;
+    padding-bottom: 0px;
+    padding-left: 10%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+nav ul {
+    margin: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+nav ul li a{
+    flex-grow: 1;
+    padding: 25px;
+    font-size: 1em;
+    font-family: "Calibri","Open Sans",sans-serif;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+section{
+    display: block;
+    background-color: pink;
+    margin-left: 15%;
+    margin-right: 15%;
+
+}
