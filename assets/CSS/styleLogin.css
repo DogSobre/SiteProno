@@ -4,17 +4,17 @@ body{
 }
 
 img{
-    width: 10%;
-    height: auto;
     display: block;
-    position: absolute;
+    width: 7.5%;
+    height: auto;
     size: 100%;
+    position: absolute;
 }
 
 h1{
-    text-align: center;
     padding-top: 1%;
     font-size: 35px;
+    text-align: center;
     color: white;
     font-family: "Calibri","Open Sans",sans-serif;
 }
@@ -27,23 +27,24 @@ h2{
 }
 
 section{
-    margin-top: 10%;
     display: block;
+    margin-top: 7%;
+    margin-left: 25%;
+    margin-right: 25%;
     text-align: center;
+    font-family: "Calibri","Open Sans",sans-serif;
+    color: whitesmoke;
     border-radius: 10px;
     border: solid 1px;
     border-color: black;
-    margin-left: 25%;
-    margin-right: 25%;
-    background-color: rgba(255, 255, 255,0.6);
-    font-family: "Calibri","Open Sans",sans-serif;
+    background-color: rgba(1, 0, 7,0.5);
 }
 
 ul{
-    text-align: center;
-    font-size: 25px;
     padding-inline-start: 2%;
     padding-inline-end: 2%;
+    text-align: center;
+    font-size: 25px;
     font-family: "Calibri","Open Sans",sans-serif;
 }
 
@@ -77,4 +78,13 @@ a{
 
 #presentation{
     text-align: center;
+}
+
+footer{
+    color: white;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    margin: center;
+    width: 100%;
 }

@@ -11,7 +11,7 @@
 <body>
     <header>
         <div id="logoMP">
-            <img src="assets/images/MPlogo.png">
+            <img src="assets/images/MPlogo.png" class="logo">
         </div>
 
         <div id="presentation">
@@ -19,48 +19,98 @@
         </div>
 
         <nav>
-            <ul>
-                <li>
-                    <a href="indexAccueil.html" class="topNav">Accueil</a>
-                </li>
-                <li>
-                    <a href="indexClassement.html" class="topNav">Classement</a>
-                </li>
-                <li>
-                    <a href="indexCalendrier.html" class="topNav">Calendrier</a>
-                </li>
-                <li>
-                    <a href="indexParis.html" class="topNav">Paris</a>
-                </li>
-            </ul>
+            <div class="conteneurNav">
+                <ul>
+                    <li>
+                        <a href="indexAccueil.html" class="topNav">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="indexClassement.html" class="topNav">Classement</a>
+                    </li>
+                    <li>
+                        <a href="indexCalendrier.html" class="topNav">Calendrier</a>
+                    </li>
+                    <li>
+                        <a href="indexParis.html" class="topNav">Paris</a>
+                    </li>
+                    <li>
+                        <a href="indexRewards.html" class="topNav">Récompenses</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <section class="mainContainer">
-        <div id="corpsDeTexte">
-            <ul id="presentation">
-                <h2>
-                    Bienvenue dans le site sur le site de pronostics du CSE. Chaque jour venez pariez sur quelle équipe
-                    gagnera son match.
-                </h2>
-                <p>
-                    Les règles du jeu son les suivantes :
-                    <br>
-                    Chaque jour vous pourrez parier sur quelle équipe gagnera. Si vous avez juste et que vous trouvez le
-                    score final, 5 points vous serons attribués, sinon 3 points vous sont accordés. Dans le cas où vous
-                    n'aurez aucun points. Le classement s'effectuera en fonctions de vos points. À la fin de l'Euro,
-                    ceux ou celles qui auront accumulés le plus de points auront des lots proportionnel à leur
-                    classement
-                </p>
-            </ul>
-        </div>
-        <div id="carroussel">
-
-        </div>
+        <aside class="g1">
+            <div class="carrousel">
+                <div class="mySlide">
+                    <a href="indexClassement.html" title="classement" target="_blank">
+                        <img src="assets/images/forbesc.jpg" name="classement" alt="Classement">
+                    </a>
+                </div>
+                <div class="mySlide">
+                    <a href="indexMatch.html" title="match du jour" target="_blank">
+                        <img src="assets/images/rencontreJour.jpg" name="match du jour" alt="match_du_jour">
+                    </a>
+                </div>
+                <div class="mySlide">
+                    <a href="indexRewards.html" title="récompenses" target="_blank">
+                        <img src="assets/images/reward.jpg" name="reward" alt="recompense_vainqueurs">
+                    </a>
+                </div>
+            </div>
+        </aside>
+        <article class="g2Conteneur">
+            <div id="corpsDeTexte">
+                <ul id="presentation">
+                    <h2>
+                        Bienvenue sur le site de pronostics du CSE. Chaque jour venez pariez sur quelle
+                        équipe
+                        gagnera son match.
+                    </h2>
+                    <p>
+                        Les règles du jeu son les suivantes :
+                        <br>
+                        Chaque jour vous pourrez parier sur quelle équipe gagnera. Si vous avez juste et que vous
+                        trouvez le
+                        score final, 5 points vous serons attribués, sinon 3 points vous sont accordés. Dans le cas
+                        où ne trouverez pas le vainqueur, aucun points ne vous serins distribués. Le classement
+                        s'effectuera en fonctions de vos points. À la fin de
+                        l'Euro,
+                        ceux ou celles qui auront accumulés le plus de points auront des lots proportionnel à leur
+                        classement
+                    </p>
+                </ul>
+            </div>
+        </article>
+        <aside class="g3">
+            <p>test</p>
+        </aside>
     </section>
-    <script>
-
-    </script>
+    <footer>
+        <p>© Market Pay & Market Pay Tech</p>
+    </footer>
 </body>
+
+<!--Le script suivant permet de faire défiler les images à chaque x temps d'intervalle-->
+<script>
+    var slideIndex = 0;
+
+    function carrousel() {
+        var i = 0;
+        var x = document.getElementsByClassName('mySlide');
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex].style.display = "block";
+        slideIndex++;
+        if (slideIndex == x.length) {
+            slideIndex = 0;
+        }
+        setTimeout(carrousel, 2500); //choisir la durée de chaque slide en ms
+    }
+    carrousel();
+</script>
 
 </html>
