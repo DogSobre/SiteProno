@@ -1,7 +1,6 @@
 CREATE TABLE Classement(
     idCollab INT,
     idClassement INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    classement_number INT(40) NOT NULL,
     classement_point INT(40) UNSIGNED,
     
     FOREIGN KEY (idCollab) REFERENCES `Collab`(idCollab) ON DELETE CASCADE ON UPDATE CASCADE
@@ -17,3 +16,9 @@ CREATE TABLE resultatMatch(
     FOREIGN KEY (idCollab) REFERENCES `Collab`(idCollab) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
+INSERT INTO `Classement`(`classement_point`) VALUES (31);
+INSERT INTO `Classement`(`classement_point`) VALUES (54);
+INSERT INTO `Classement`(`classement_point`) VALUES (02);
+INSERT INTO `Classement`(`classement_point`) VALUES (83);
+INSERT INTO `Classement`(`classement_point`) VALUES (29);
+INSERT INTO `Classement`(`classement_point`) VALUES (44);
