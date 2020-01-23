@@ -1,8 +1,13 @@
+
+/* In the body css, we define the background of our website.
+ The picture must need to be on the same folder than the style.css 
+ because the CSS cannot find the path if they are not on the same folder */
 body{
      background-image:url(terrainDeFoot.jpg);
      background-size: 100%;
 }
 
+/* This img refers to the logo of Market Pay in the left-top */
 img{
     display: block;
     width: 7.5%;
@@ -11,6 +16,7 @@ img{
     position: absolute;
 }
 
+/* The title of our website */
 h1{
     padding-top: 1%;
     font-size: 35px;
@@ -19,6 +25,7 @@ h1{
     font-family: "Calibri","Open Sans",sans-serif;
 }
 
+/* The subtitle of our website */
 h2{
     font-size: 30px;
     padding-top: 5%;
@@ -27,6 +34,7 @@ h2{
     text-align: center;
 }
 
+/*  */
 section{
     display: block;
     margin-top: 7%;
