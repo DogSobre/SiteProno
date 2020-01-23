@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
+<h:ead>
     <meta charset="utf-8">
     <title>Pronostic CSE</title>
     <link rel="icon" href="assets/images/logo.png" />
     <link rel="stylesheet" type="text/css" href="assets/CSS/styleLogin.css">
-</head>
+</h:ead>
 
 <body>
 
     <header>
         <div id="logoMP">
-            <img src="assets/images/MPlogo.png"> </div>
-        <div id="presentation">
+            <!-- In this div, we can find the path of the logo of Market Pay, the <a>...</a> allow us to redirect the user to the main web site -->
+            <a href="https://cse-marketpay.fr/">
+                <img src="assets/images/MPlogo.png">
+            </a>
+        </div> <!--  -->
+        <div id="presentationTitre">
             <h1>Pronostic CSE</h1>
             <h2>Connectez-vous au site de pronostics du CSE</h2>
         </div>
@@ -28,7 +32,9 @@
                 </ul>
             </div>
             <center>
+                <!-- The tag <center> allow us to center or <table> -->
                 <table>
+                    <!-- We ceate a table without columns but with rows. Indeed it allow us to facilitate the alignment of the differents rows -->
                     <tbody>
                         <tr>
                             <td>Mail Collaborateur :</td>
@@ -37,6 +43,8 @@
                             <td>
                                 <input type="email" name="userMail" placeholder="collaborateur@carrefour.com"
                                     pattern="collaborateur@carrefour.com" required>
+                                <!-- The input is an email type, because the collaborator needs to connect with his collaborator email.
+                                     It's a required field. Thanks to that, the collaborator is forced to connect to have acces to the pronostic website -->
                             </td>
                         </tr>
                         <tr>
@@ -45,12 +53,17 @@
                         <tr>
                             <td>
                                 <input type="password" name="userPassword" placeholder="**********" required>
+                                <!-- This input is a password type, the collaborator needs to use the password links to his account..
+                                     It's a required field. Same reasons as for email -->
+
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <button>
+
                                     <a href="indexAccueil.html">OK</a>
+                                    <!-- A simply button to submit the connection. Actually the button allows to bypass the required conditions of the inputs-->
                                 </button>
                             </td>
                         </tr>
@@ -61,6 +74,7 @@
     </section>
     <footer>
         <p>© Market Pay & Market Pay Tech</p>
+        <!-- The footer with the copyright -->
     </footer>
 </body>
 
