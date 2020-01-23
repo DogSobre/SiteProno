@@ -1,6 +1,8 @@
-SiteProno
+-------------------------------------------------- SiteProno --------------------------------------------------
+
 
 ----- indexLogin -----
+
 
 The indexLogin is the first page of our website. The visitor must need to be connected with he's collaborator email. Use is very simple:
 
@@ -21,8 +23,8 @@ The indexLogin is the first page of our website. The visitor must need to be con
         Finally, the <footer>...</footer> to put here the Copyright (©).
 
 
-
 ----- indexAccueil -----
+
 
 The indexAccueil is a little bit more complicated than indexLogin. The visitor arrived to the main menu and can see all of the website with just a look. He can see the rules, the ranking, the match of the day and the rewards.
 
@@ -34,8 +36,30 @@ The indexAccueil is a little bit more complicated than indexLogin. The visitor a
     -> <section>...</section> :
         This <section>...</section> is divided into two parts :
         -> <aside class="g1">...</aside> :
-            It's the first part of our <section>...</section>. Into dis class we input the first part of the _"carrousel"_ . We put into 3 <div>...</div> 3 differents picture and each of them has an <a href="">.
+            It's the first part of our <section>...</section>. Into dis class we input the first part of the _"carrousel"_(1) . We put into 3 <div>...</div> 3 differents picture and each of them has an <a href="">.
         -> <article class="g2Conteneur">...</article> :
             Is the real body of this page of our website. Into this <article>...</article> we write the rules. And with the CSS we made sure this tag bigger than the rest.
     -> <footer>...</footer> :
         We put the Copyright (©) into the <footer>...</footer>.
+
+-> <script>...</script> :
+    In the <script>...</script> we put the secont part of ouf _"carrousel"_(2), how did you see, it's writed on JavaScript. It's only one function who pemite us to slide the different pictures of the <aside>...</aside>:
+        This function take the picture, affects a number to the picture (start at 0), and increment + 1 to the picture. But as we have a variable  i = 0, if "i" is under the number of the picture we move on the next one after x time exemple :
+            <script>
+                var picture = 0;
+                var i = 0; 
+            </script>
+        The two varibales start at 0, so we can start. We put ++ to the picture so :
+            <script>
+                var picture = 1;
+                var i = 0;
+            </script>
+        As "i" is under "picture", we put ++ to "i".
+            <script>
+                var picture = 1;
+                var i = 1;
+            </script>
+        And we can repeat x times.
+
+
+----- indexClassement    -----
