@@ -99,7 +99,7 @@ And the <footer>, the same for the all website :
 
 -> <body>...</body> :
     -> <footer>...</footer> :
-        We put the Copyright (©) into the <footer>...</footer>.
+        We put the Copyright (©) into the <footer>...</footer>
 
 
 ----- indexParis -----
