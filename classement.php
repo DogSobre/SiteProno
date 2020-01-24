@@ -12,3 +12,5 @@ while (mysqli_result::fetch_array([int $best_collab = MYSQLI_BOTH]) : mixed ){
     echo $best_collab['classement_point'];
     $compteur ++;
 }
+
+//changer mysqli --> $PDO
