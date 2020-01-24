@@ -49,17 +49,31 @@ The indexAccueil is a little bit more complicated than indexLogin. The visitor a
                 var picture = 0;
                 var i = 0; 
             </script>
-        The two varibales start at 0, so we can start. We put ++ to the picture so :
+        The two varibales start at 0, so we can start. We put ++ into the picture so :
             <script>
                 var picture = 1;
                 var i = 0;
             </script>
-        As "i" is under "picture", we put ++ to "i".
+        As "i" is under "picture", we put ++ into "i".
             <script>
                 var picture = 1;
                 var i = 1;
             </script>
-        And we can repeat x times.
+        And we can repeat this <script>...</script> x times.
 
 
------ indexClassement    -----
+----- indexClassement -----
+
+
+The indexClassement is same like indexAccueil for few things. For exemple the header is the same.
+
+-> <body>...</body> :
+    -> <header>...</header> :
+        This <header>...</header> is exactly the same than indexAccueil :
+        -> <nav>...</nav> :
+            The <nav>...</nav> allow us to make the responsive navition bar. Into this nav we make a list <li>...</li> with the differents links : indexAccueil ; indexClassement ; indexCalendrier ; indexParis ; indexRewards.
+    -> <section>...</section> :
+        ==>> Actually the <section>...</section> is on WIP phase : <<==
+    -> <footer>...</footer> :
+        We put the Copyright (©) into the <footer>...</footer>.
+     
