@@ -77,3 +77,51 @@ The indexClassement is same like indexAccueil for few things. For exemple the he
     -> <footer>...</footer> :
         We put the Copyright (©) into the <footer>...</footer>.
      
+
+----- indexCalendrier -----
+
+The indexCalendrier is gonna be same like the indexClassement. Indeed, the top nav and basically the functionalities of this page are simple. In this page you can consult the calendar for the next matches during the Euro 2020.
+The <header> is the same for the rest of website :
+
+-> <body>...</body> :
+    -> <header>...</header> :
+        This <header>...</header> is exactly the same than indexAccueil :
+        -> <nav>...</nav> :
+            The <nav>...</nav> allow us to make the responsive navition bar. Into this nav we make a list <li>...</li> with the differents links : indexAccueil ; indexClassement ; indexCalendrier ; indexParis ; indexRewards.
+
+The only differences in the rest of the pages are the section :
+
+-> <body>...</body> :
+    -> <section>...</body> :
+        ==>> Actually the <section>...</section> is on WIP phase : <<==
+
+And the <footer>, the same for the all website :
+
+-> <body>...</body> :
+    -> <footer>...</footer> :
+        We put the Copyright (©) into the <footer>...</footer>.
+
+
+----- indexParis -----
+
+In the indexParis, the user can bet on the team he thinks will win.
+
+-> <header>...</header> :
+    Refer you to the previous explications.
+-> <section>...</section> :
+    ==>> Actually the <section>...</section> is on WIP phase : <<==
+-> <footer>...</footer> :
+    Refer you to the previous explications.
+
+
+----- indexRewards -----
+
+
+In the rewards page, the user can consult the differents rewards for the winners. To see what he can win, the user must be motivated to play at our Euro2020 game. And in function of his rank too, he can see what he can win. Another time, many similarities than the rest of the website pages.
+
+-> <header>...</header> :
+    Refer you to the previous explications.
+-> <section>...</section> :
+    ==>> Actually the <section>...</section> is on WIP phase : <<==
+-> <footer>...</footer> :
+    Refer you to the previous explications.
