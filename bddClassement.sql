@@ -40,3 +40,18 @@ CREATE TABLE resultatMatch(
 
     FOREIGN KEY (idCollab) REFERENCES `Collab`(idCollab) ON DELETE CASCADE ON UPDATE CASCADE
 )
+
+------------------------ Table UserTest ------------------------
+
+CREATE IF NOT EXISTS Collab(
+    idCollab INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Collab_Name VARCHAR(50) NOT NULL,
+    Collab_Mail VARCHAR (50) NOT NULL,
+    Collab_Password VARCHAR (50) NOT NULL
+)
+
+----------
+
+INSERT INTO `Collab` (`idCollab`, `Collab_Name`, `Collab_Mail`, `Collab_Password`) VALUES (NULL, 'Player1', 'playerone@123.com', 'password1');
+INSERT INTO `Collab` (`idCollab`, `Collab_Name`, `Collab_Mail`, `Collab_Password`) VALUES (NULL, 'Player2', 'playertwo@123.com', 'password2');
+INSERT INTO `Collab` (`idCollab`, `Collab_Name`, `Collab_Mail`, `Collab_Password`) VALUES (NULL, 'Player3', 'playerthree@123.com', 'password3');
