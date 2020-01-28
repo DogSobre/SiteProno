@@ -53,8 +53,7 @@
     // On affiche le resultat
     $nombre_de_lignes = 1;
 
-    while (($donnees = $reponse->fetch()) && ($nombre_de_lignes <= 100))
-    {
+    while (($donnees = $reponse->fetch()) && ($nombre_de_lignes <= 100)) {
         //On affiche les données dans le tableau
         echo "<table border='1'>";
         echo "<tr>";
