@@ -7,22 +7,20 @@ $pwd = root;
 
 try {
     $myPdo = new PDO('mysql:host=$database;dbname=inventory;charset=UTF-8', '$user' ,'$pwd');
-    foreach ($myPdo->query('SELECT * from Classement') as $row);{
+    foreach ($myPdo -> prepare('SELECT Collab, classement_point FROM Classement ORDER BY classement_point DESC') as $row);{
         /** @var TYPE_NAME $row */
         print_r($row);
     }
-    $myPdo = null;
+    $myPdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $result = $myPdo -> fetchAll(PDO::FETCH_ASSOC);
+    print_r($result);
+
+    // Capture des exception si excepetion lancée et affichage des info :
 }catch (PDOException $e){
     print "Erreur :" . $e->getMessage() . "<br/>";
     die();
 }
 
-$sth = $myPdo -> prepare("SELECT `Collab`, `classement_point` FROM `Classement` ORDER BY `` DESC");
-$sth -> execute();
-
-$result = $sth -> fetchAll(PDO::FETCH_ASSOC);
-
-print_r($result);
 
 ?>
 
