@@ -1,6 +1,6 @@
 <?php
 
-// Paramétrage de la connexion à la base de données
+// Setting the connection to the DataBase
 $database = localhost;
 $user = root;
 $pwd = root;
@@ -12,9 +12,9 @@ try {
     $sth = $myPdo -> prepare('SELECT Collab, classement_point FROM Classmement ORDER BY classement_point DESC');
     $result = $sth -> fetchAll(FETCH_ASSOC);
     print_r($result);
-    echo 'Connexion à la b aseé de données effectuée. ';
+    echo 'Connection to the DataBase done.';
 
-    // Capture des exception si exception lancée, et affichage des info :
+    // Catch the exceptions an showing them
 }catch (PDOException $e){
     print "Error :" . $e -> getMessage() . "<br/>";
     die();
@@ -24,9 +24,9 @@ $result = fetchAsso([ int, $bestCollab = "FETCH_BOTH"]);
 
 $results = $myPdo -> query('SELECT Collab, classement_point FROM Classement');
 
-// Affichage du tableau de classement
+// Display ranking board
 $count = 1;
-while(($data = $results -> fetch()) && ($count <= 10)) {
+while(($data = $results -> fetch()) && ($count <= 10)){
     echo $count;
     echo $bestCollab['Collab'];
     echo $bestCollab['classement_point'];
@@ -34,24 +34,6 @@ while(($data = $results -> fetch()) && ($count <= 10)) {
 }
 $results -> closeCursor();
 
-// Fermeture de la conneixon à la base de données :
-
+// Closing the connection to the DataBase :
 $myPdo = null;
-echo 'Base de données fermée.';
-
-
-/*$best_collab = 0 ;
-
-$recup_player = $myPdo->query("","","","");
-
-public PDOStatement::fetchAsso([ int, $best_collab = "PDO::FETCH_BOTH" [array ]]) : mixed ;
-
-$compteur = 1;
-while (mysqli_result::fetch_array([int $best_collab = MYSQLI_BOTH]) : mixed ){
-    echo $compteur;
-    echo $best_collab['Collab'];
-    echo $best_collab['classement_point'];
-    $compteur ++;
-}
-
-//changer mysqli --> $PDO/*/
+echo 'DataBase closed.';
