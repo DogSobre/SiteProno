@@ -22,6 +22,7 @@ try {
 $result = fetchAsso([ int, $bestCollab = "FETCH_BOTH"]);
 
 $results = $myPdo -> query('SELECT Collab, classement_point FROM Classement');
+
 // Affichage du tableau de classement
 $count = 1;
 while(($data = $results -> fetch()) && ($count <= 10)) {
@@ -31,6 +32,10 @@ while(($data = $results -> fetch()) && ($count <= 10)) {
     $count++;
 }
 $results -> closeCursor();
+
+// Fermeture de la conneixon à la base de données :
+
+$myPdo = null;
 
 
 /*$best_collab = 0 ;
