@@ -12,6 +12,7 @@ try {
     $sth = $myPdo -> prepare('SELECT Collab, classement_point FROM Classmement ORDER BY classement_point DESC');
     $result = $sth -> fetchAll(FETCH_ASSOC);
     print_r($result);
+    echo 'Connexion à la b aseé de données effectuée. ';
 
     // Capture des exception si exception lancée, et affichage des info :
 }catch (PDOException $e){
@@ -36,6 +37,7 @@ $results -> closeCursor();
 // Fermeture de la conneixon à la base de données :
 
 $myPdo = null;
+echo 'Base de données fermée.';
 
 
 /*$best_collab = 0 ;
