@@ -17,7 +17,7 @@ The indexLogin is the first page of our website. The visitor must need to be con
             Basically this page just have 2 <inputs> and one <button>:
                 - <input type="email"> is to enter your collaborator email.
                 - <input type="password"> is to enter your password from your collaborator account.
-                - <button> ... </button> :  the button tag convert on button any things inside. So into the button we put                                   inside an <a href="..."> who refer to the main index of the web site                                            indexAccueil.html
+                - <button> ... </button> :  the button tag convert on button any things inside. So into the button we put inside an <a href="..."> who refer to the main index of the web site indexAccueil.html.
         We shut in the <form>...</form> into a <center>...</center> tag tog align the <table>...</table> with Y axe.
     -> <footer>...</footer> :
         Finally, the <footer>...</footer> to put here the Copyright (©).
