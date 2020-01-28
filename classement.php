@@ -1,23 +1,18 @@
 <?php
-
-// Setting the connection to the DataBase
-$database = localhost;
-$user = root;
-$pwd = root;
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$db = "sitePronoTest";
 
 try {
-    $myPdo = new PDO('mysql:host=$database;dbname=inventory;charset=UTF-8', '$user' ,'$pwd');
-    $myPdo -> setAttribute(ATTR_ERRMODE, ERRMODE_EXCEPTION);
-
-    $sth = $myPdo -> prepare('SELECT Collab, classement_point FROM Classmement ORDER BY classement_point DESC');
-    $result = $sth -> fetchAll(FETCH_ASSOC);
-    print_r($result);
-    echo 'Connection to the DataBase done.';
-
-    // Catch the exceptions an showing them
-}catch (PDOException $e){
-    print "Error :" . $e -> getMessage() . "<br/>";
-    die();
+    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+}
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
 }
 
 $result = fetchAsso([ int, $bestCollab = "FETCH_BOTH"]);
