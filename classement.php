@@ -37,3 +37,4 @@ $results -> closeCursor();
 // Closing the connection to the DataBase :
 $myPdo = null;
 echo 'DataBase closed.';
+?>
