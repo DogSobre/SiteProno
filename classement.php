@@ -16,9 +16,13 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
 }
 
+// Choose the values from rows `Collab`
+$sth = $conn -> prepare('SELECT Collab, classement_point FROM Collab ORDER BY classement_point');
+$sth -> execute();
+
 $result = fetchAsso([ int, $bestCollab = "FETCH_BOTH"]);
 
-$results = $myPdo -> query('SELECT Collab, classement_point FROM Classement');
+$results = $conn -> query('SELECT Collab, classement_point FROM Classement');
 
 // Display ranking board
 $count = 1;
@@ -31,6 +35,6 @@ while(($data = $results -> fetch()) && ($count <= 10)){
 $results -> closeCursor();
 
 // Closing the connection to the DataBase :
-$myPdo = null;
+$conn = null;
 echo 'DataBase closed.';
 ?>
