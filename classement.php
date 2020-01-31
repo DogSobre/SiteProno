@@ -15,11 +15,24 @@ catch(PDOException $e)
 {
     echo "Connection failed: " . $e->getMessage();
 }
+
 /*
 // Choose the values from rows `Collab`
-$sth = $conn -> prepare('SELECT Collab, classement_point FROM Collab ORDER BY classement_point');
+$sth = $conn -> prepare('SELECT Collab, classement_point FROM Classement ORDER BY classement_point');
 $sth -> execute();
+print ($sth);
+*/
 
+
+$sql = 'SELECT Collab, classement_point FROM Classement ORDER BY classement_point';
+$req = PDO::query($sql) or die("ERROR SQL <br/>".sql."<br/>".PDO::errorInfo());
+
+$data = PDOStatement::fetchAll($req);
+
+PDOStatement::closeCursor();
+
+$conn = null;
+/*
 $result = fetchAsso([ int, $bestCollab = "FETCH_BOTH"]);
 
 $results = $conn -> query('SELECT Collab, classement_point FROM Classement');
@@ -36,5 +49,6 @@ $results -> closeCursor();
 
 // Closing the connection to the DataBase :
 $conn = null;
-echo 'DataBase closed.';*/
+echo 'DataBase closed.';
+*/
 ?>
