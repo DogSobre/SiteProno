@@ -84,7 +84,7 @@ echo "Connection failed: " . $e->getMessage();
         </form>
     </section>
     <footer>
-        <p>© Market Pay & Market Pay Tech</p>
+        <p>© 2019-2020 Market Pay & Market Pay Tech</p>
     </footer>
 </body>
 
