@@ -1,4 +1,23 @@
-<!DOCTYPE html>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$db = "sitePronoTest";
+
+// Connection to database :
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+echo "Connected successfully";
+}
+catch(PDOException $e)
+{
+echo "Connection failed: " . $e->getMessage();
+}
+?>
+
+<!DOCTYPE>
 <html lang="fr">
 
 <head>
@@ -30,7 +49,7 @@
                     du classement.
                 </ul>
             </div>
-            <center>
+            <div style="text-align: center;">
                 <table>
                     <tbody>
                         <tr>
@@ -61,7 +80,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </center>
+            </div>
         </form>
     </section>
     <footer>
