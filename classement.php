@@ -23,6 +23,7 @@ $sth -> execute();
 print ($sth);
 */
 
+echo (" // Ceci est le mot de passe hashé : ");
 echo hash('sha256', 'hello');
 /*
 $sql = 'SELECT Collab, classement_point FROM Classement ORDER BY classement_point';
