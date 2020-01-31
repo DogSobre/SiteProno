@@ -23,7 +23,8 @@ $sth -> execute();
 print ($sth);
 */
 
-
+echo hash('sha256', 'hello');
+/*
 $sql = 'SELECT Collab, classement_point FROM Classement ORDER BY classement_point';
 $req = PDO::query($sql) or die("ERROR SQL <br/>".sql."<br/>".PDO::errorInfo());
 
@@ -32,7 +33,7 @@ $data = PDOStatement::fetchAll($req);
 PDOStatement::closeCursor();
 
 $conn = null;
-/*
+
 $result = fetchAsso([ int, $bestCollab = "FETCH_BOTH"]);
 
 $results = $conn -> query('SELECT Collab, classement_point FROM Classement');
