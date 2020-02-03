@@ -14,30 +14,44 @@ try {
 catch(PDOException $e){
     echo "Connection failed: " . $e->getMessage();
 }
+/*
+$pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
-if(isset($_POST) and !empty($_POST['Collab_Password']) and !empty($_POST['Collab_Mail'])){
-    $pseudo = $_POST['Collab_Mail'];
-    $password = $_POST['Collab_Password'];
+$req = $db->prepare('INSERT INTO Collab(Collab_Name, Collab_Password, Collab_email) VALUES(:pseudo, :pass, :email)');
+$req->execute(array(
+    'pseudo' => $pseudo,
+    'pass' => $pass_hache,
+    'email' => $email));
 
-    $req = $db -> prepare('SELECT Collab_Name, Collab_Mail, Collab_Password FROM Collab');
-    $req -> execute(array(
-        ':name' => $pseudo,
-        ':password' => $password));
 
-    $result = $req -> fecth();
+$pass_hash = password_hash('password1', PASSWORD_DEFAULT);
+echo '// Voici le mdp hashé : ';
+echo ($pass_hash);
+*/
+$pseudo = 0;
 
-    if (!$result){
-        echo '<body onLoad = "alert(\'Undefined user\')">';
-    }
-    else{
+$req = $db->prepare('SELECT Collab_Name, Collab_Password FROM Collab WHERE Collab_Name = :pseudo');
+$req->execute(array('pseudo' => $pseudo));
+$result = $req->fetch();
+
+$isPasswordCorrect = password_verify($_POST['Collab_Password'], $result['Collab_Password']);
+
+if (!$result)
+{
+    echo 'Undefined User';
+}
+else
+{
+    if ($isPasswordCorrect) {
         session_start();
+        $_SESSION['idCollab'] = $result['idCollab'];
         $_SESSION['Collab_Name'] = $pseudo;
-        echo ('Bienvenue sur le site de Prono de MP/MPT');
-        header('Location: indexLogin.php');
-        exit();
+        echo 'Connected Successfully';
+    }
+    else {
+        echo 'Undefined User';
     }
 }
-
 
 ?>
 
