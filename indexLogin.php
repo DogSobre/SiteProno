@@ -15,13 +15,13 @@ catch(PDOException $e){
     echo "Connection failed: " . $e->getMessage();
 }
 
-if(isset($_POST) and !empty($_POST['pwd']) and !empty($_POST['login'])){
+if(isset($_POST) and !empty($_POST['Collab_Password']) and !empty($_POST['Collab_Mail'])){
     $pseudo = $_POST['Collab_Mail'];
     $password = $_POST['Collab_Password'];
 
     $req = $db -> prepare('SELECT Collab_Name, Collab_Mail, Collab_Password FROM Collab');
     $req -> execute(array(
-        ':nom' => $pseudo,
+        ':name' => $pseudo,
         ':password' => $password));
 
     $result = $req -> fecth();
@@ -33,9 +33,11 @@ if(isset($_POST) and !empty($_POST['pwd']) and !empty($_POST['login'])){
         session_start();
         $_SESSION['Collab_Name'] = $pseudo;
         echo ('Bienvenue sur le site de Prono de MP/MPT');
+        header('Location: indexLogin.php');
         exit();
     }
 }
+
 
 ?>
 
