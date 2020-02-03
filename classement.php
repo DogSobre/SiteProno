@@ -1,4 +1,6 @@
+
 <?php
+/*
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -15,7 +17,7 @@ catch(PDOException $e)
 {
     echo "Connection failed: " . $e->getMessage();
 }
-/*
+
 // Choose the values from rows `Collab`
 $sth = $conn -> prepare('SELECT Collab, classement_point FROM Collab ORDER BY classement_point');
 $sth -> execute();

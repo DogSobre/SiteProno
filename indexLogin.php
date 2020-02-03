@@ -16,6 +16,10 @@ catch(PDOException $e)
 {
 echo "Connection failed: " . $e->getMessage();
 }
+
+if(isset($_POST) and !empty($_POST['pwd']) and !empty($_POST['login'])){
+
+}
 ?>
 
 <!DOCTYPE>
