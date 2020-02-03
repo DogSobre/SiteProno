@@ -1,25 +1,42 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$db = "sitePronoTest";
+$dbname = "sitePronoTest";
+$option = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Connection to database :
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-echo "Connected successfully";
+    $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, $option);
+    echo "Connected successfully";
 }
-catch(PDOException $e)
-{
-echo "Connection failed: " . $e->getMessage();
+catch(PDOException $e){
+    echo "Connection failed: " . $e->getMessage();
 }
 
 if(isset($_POST) and !empty($_POST['pwd']) and !empty($_POST['login'])){
+    $pseudo = $_POST['Collab_Mail'];
+    $password = $_POST['Collab_Password'];
 
+    $req = $db -> prepare('SELECT Collab_Name, Collab_Mail, Collab_Password FROM Collab');
+    $req -> execute(array(
+        ':nom' => $pseudo,
+        ':password' => $password));
+
+    $result = $req -> fecth();
+
+    if (!$result){
+        echo '<body onLoad = "alert(\'Undefined user\')">';
+    }
+    else{
+        session_start();
+        $_SESSION['Collab_Name'] = $pseudo;
+        echo ('Bienvenue sur le site de Prono de MP/MPT');
+        exit();
+    }
 }
+
 ?>
 
 <!DOCTYPE>
@@ -62,8 +79,7 @@ if(isset($_POST) and !empty($_POST['pwd']) and !empty($_POST['login'])){
                         </tr>
                         <tr>
                             <td>
-                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com"
-                                    pattern="collaborateur@carrefour.com" required>
+                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" required>
                             </td>
                         </tr>
                         <tr>
