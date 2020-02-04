@@ -1,5 +1,5 @@
 <?php
-
+/*
 $dbhost = "localhost";
 $dbusername = "root";
 $dbpassword = "root";
@@ -17,5 +17,5 @@ catch(PDOException $e)
 }
 
 session_start();
-
+*/
 ?>

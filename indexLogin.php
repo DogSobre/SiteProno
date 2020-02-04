@@ -1,5 +1,69 @@
-<?php include "index.php"; ?>
+<?php
 
+$dbhost = "localhost";
+$dbusername = "root";
+$dbpassword = "root";
+$dbname = "sitePronoTest";
+$dboption = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Connection to database :
+try {
+$db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, $dboption);
+//echo "Connected successfully";
+}
+catch(PDOException $e)
+{
+echo "Connection failed: " . $e->getMessage();
+}
+
+if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
+    $username = PDO::quote($_POST['Collab_Name']);
+    $password = PDO::quote($_POST['Collab_Password']);
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $email = PDO::quote($_POST['Collab_Mail']);
+
+    $req = $db->prepare("SELECT * FROM Collab WHERE Collab_Name = :pseudo");
+    $req->execute(array(
+        'Collab_Name' => $username));
+    $result = $req -> fetch();
+
+    $isPasswordCorrect = password_verify($_POST['Collab_Password'], $result['Collab_Password']);
+
+    if (!$result){
+        echo 'Identifiant ou mot de passe incorrect';
+    }
+    else{
+        if ($isPasswordCorrect){
+            session_start();
+            $_SESSION['idCollab'] = $result['idCollab'];
+            $_SESSION['Collab_Name'] = $username;
+            echo 'Bienvenue';
+        }
+        else{
+            echo 'Identifiant ou mot de passe incorrect';
+        }
+    }
+}
+
+/*
+if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
+    $username = PDO::quote($_POST['Collab_Name']);
+    $password = PDO::quote($_POST['Collab_Password']);
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $email = PDO::quote($_POST['Collab_Mail']);
+
+    $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Name = '" . $username . "'");
+    $isPasswordCorrect = password_verify($password, $hashedPassword);
+
+    if ($isPasswordCorrect == true && $isUsername == true) {
+        //header('Location : indexAccuueil.html');
+        echo('Bienvenue');
+    } else {
+        echo('Utilisateur ou Mot De Passe incorrect');
+    }
+}
+*/
+?>
 <!DOCTYPE>
 <html lang="fr">
 
@@ -33,27 +97,6 @@
                 </ul>
             </div>
             <div style="text-align: center;">
-
-                <?php
-                if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])){
-                    $username = PDO::quote($_POST['Collab_Name']);
-                    $password = PDO::quote($_POST['Collab_Password']);
-                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                    $email = PDO::quote($_POST['Collab_Mail']);
-
-                    $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Name = '".$username."'");
-                    $isPasswordCorrect = password_verify($password, $hashedPassword);
-
-                    if ($isPasswordCorrect == true && $isUsername == true){
-                        //header('Location : indexAccuueil.html');
-                        echo ('Bienvenue');
-                    }
-                    else{
-                        echo ('Utilisateur ou Mot De Passe incorrect');
-                    }
-                }
-                ?>
-
                 <table>
                     <tbody>
                         <tr>
