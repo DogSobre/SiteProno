@@ -44,6 +44,13 @@
                     $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Username = '".$username."'");
                     $isPasswordCorrect = password_verify($password, $hashedPassword);
 
+                    if ($isPasswordCorrect = true && $isUsername = true){
+                        header('Location : indexAccuueil.html');
+                        echo ('Bienvenue');
+                    }
+                    else{
+                        echo ('Utilisateur ou Mot De Passe incorrect');;
+                    }
                 }
                 ?>
 
