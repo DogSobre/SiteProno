@@ -1,20 +1,6 @@
+<?php include 'index.php'?>
+
 <?php
-
-$dbhost = "localhost";
-$dbusername = "root";
-$dbpassword = "root";
-$dbname = "sitePronoTest";
-$dboption = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-// Connection to database :
-try {
-$db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, $dboption);
-//echo "Connected successfully";
-}
-catch(PDOException $e)
-{
-echo "Connection failed: " . $e->getMessage();
-}
 
 if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
     $username = PDO::quote($_POST['Collab_Name']);
