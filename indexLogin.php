@@ -1,57 +1,15 @@
 <?php
 
-$servername = "localhost";
+$dbhost = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "sitePronoTest";
 $option = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Connection to database :
-try {
-    $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, $option);
-    echo "Connected successfully";
-}
-catch(PDOException $e){
-    echo "Connection failed: " . $e->getMessage();
-}
-/*
-$pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-
-$req = $db->prepare('INSERT INTO Collab(Collab_Name, Collab_Password, Collab_email) VALUES(:pseudo, :pass, :email)');
-$req->execute(array(
-    'pseudo' => $pseudo,
-    'pass' => $pass_hache,
-    'email' => $email));
+$db = new PDO('mysql:host=$dbhost;dbname=$dbname', $username, $password,$option) or die($db -> errorInfo());
 
 
-$pass_hash = password_hash('password1', PASSWORD_DEFAULT);
-echo '// Voici le mdp hashé : ';
-echo ($pass_hash);
-*/
-$pseudo = 0;
-
-$req = $db->prepare('SELECT Collab_Name, Collab_Password FROM Collab WHERE Collab_Name = :pseudo');
-$req->execute(array('pseudo' => $pseudo));
-$result = $req->fetch();
-
-$isPasswordCorrect = password_verify($_POST['Collab_Password'], $result['Collab_Password']);
-
-if (!$result)
-{
-    echo 'Undefined User';
-}
-else
-{
-    if ($isPasswordCorrect) {
-        session_start();
-        $_SESSION['idCollab'] = $result['idCollab'];
-        $_SESSION['Collab_Name'] = $pseudo;
-        echo 'Connected Successfully';
-    }
-    else {
-        echo 'Undefined User';
-    }
-}
 
 ?>
 
