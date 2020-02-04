@@ -1,6 +1,4 @@
-<?php
-    include "index.php";
-?>
+<?php include "index.php"; ?>
 
 <!DOCTYPE>
 <html lang="fr">
@@ -46,12 +44,6 @@
                     $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Username = '".$username."'");
                     $isPasswordCorrect = password_verify($password, $hashedPassword);
 
-                    if ($isPasswordCorrect = true){
-                        echo ('Bienvenue');
-                    }
-                    else{
-                        echo ('Undefined User or Password');
-                    }
                 }
                 ?>
 
