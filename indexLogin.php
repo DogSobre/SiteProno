@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <title>Pronostic CSE</title>
-    <link rel="icon" href="assets/images/logo.png" />
+    <link rel="icon" href="assets/images/MPlogo.png" />
     <link rel="stylesheet" type="text/css" href="assets/CSS/styleLogin.css">
 </head>
 
@@ -44,12 +44,12 @@
                     $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Username = '".$username."'");
                     $isPasswordCorrect = password_verify($password, $hashedPassword);
 
-                    if ($isPasswordCorrect = true && $isUsername = true){
-                        header('Location : indexAccuueil.html');
+                    if ($isPasswordCorrect == true && $isUsername == true){
+                        //header('Location : indexAccuueil.html');
                         echo ('Bienvenue');
                     }
                     else{
-                        echo ('Utilisateur ou Mot De Passe incorrect');;
+                        echo ('Utilisateur ou Mot De Passe incorrect');
                     }
                 }
                 ?>
