@@ -1,15 +1,22 @@
 <?php
 
 $dbhost = "localhost";
-$username = "root";
-$password = "root";
+$dbusername = "root";
+$dbpassword = "root";
 $dbname = "sitePronoTest";
-$option = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$dboption = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Connection to database :
-$db = new PDO('mysql:host=$dbhost;dbname=$dbname', $username, $password,$option) or die($db -> errorInfo());
+try {
+    $db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, $dboption);
+    echo "Connected successfully";
+}
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
+}
 
-
+session_start();
 
 ?>
 
@@ -46,6 +53,26 @@ $db = new PDO('mysql:host=$dbhost;dbname=$dbname', $username, $password,$option)
                 </ul>
             </div>
             <div style="text-align: center;">
+
+                <?php
+                if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])){
+                    $username = PDO::quote($_POST['Collab_Name']);
+                    $password = PDO::quote($_POST['Collab_Password']);
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $email = PDO::quote($_POST['Collab_Mail']);
+
+                    $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Username = '".$username."'");
+                    $isPasswordCorrect = password_verify($password, $hashedPassword);
+
+                    if ($isPasswordCorrect = true){
+                        echo ('Bienvenue');
+                    }
+                    else{
+                        echo ('Undefined User or Password');
+                    }
+                }
+                ?>
+
                 <table>
                     <tbody>
                         <tr>
@@ -67,10 +94,7 @@ $db = new PDO('mysql:host=$dbhost;dbname=$dbname', $username, $password,$option)
                         </tr>
                         <tr>
                             <td>
-                                <button>
-
-                                    <a href="indexAccueil.html">OK</a>
-                                </button>
+                                <input type="submit" name="check" placeholder="Ok" value="OK" onclick="document.location.href='indexAccueil.html'">
                             </td>
                         </tr>
                     </tbody>
