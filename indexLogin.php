@@ -41,7 +41,7 @@
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                     $email = PDO::quote($_POST['Collab_Mail']);
 
-                    $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Username = '".$username."'");
+                    $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Name = '".$username."'");
                     $isPasswordCorrect = password_verify($password, $hashedPassword);
 
                     if ($isPasswordCorrect == true && $isUsername == true){
