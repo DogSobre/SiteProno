@@ -2,33 +2,26 @@
 
 <?php
 
-if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
-    $username = PDO::quote($_POST['Collab_Name']);
-    $password = PDO::quote($_POST['Collab_Password']);
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $email = PDO::quote($_POST['Collab_Mail']);
+$login = $_POST['Collab_Mail'];
+$password = $_POST['Collab_Password'];
 
-    $req = $db -> prepare("SELECT * FROM Collab WHERE Collab_Name = :pseudo");
-    $req -> execute(array(
-        'Collab_Name' => $username));
-    $result = $req -> fetch();
+if (isset($_POST['Collab_Mail']) && isset($_POST['Collab_Password'])){
 
-    $isPasswordCorrect = password_verify($_POST['Collab_Password'], $result['Collab_Password']);
+    if($login == $_POST['Collab_Mail'] && $password == $_POST['Collab_Password']){
+        session_start();
 
-    if (!$result){
-        echo 'Identifiant ou mot de passe incorrect';
+        $_SESSION['Collab_Mail'] = $_POST['Collab_Mail'];
+        $_SESSION['Collab_Password'] = $_POST['Collab_Password'];
+
+        header('location : indexAccueil.php');
     }
     else{
-        if ($isPasswordCorrect){
-            session_start();
-            $_SESSION['idCollab'] = $result['idCollab'];
-            $_SESSION['Collab_Name'] = $username;
-            echo 'Bienvenue';
-        }
-        else{
-            echo 'Identifiant ou mot de passe incorrect';
-        }
+        echo '<body onload="alert(\'Membre non reconnu\'">';
+        echo '<meta http-equiv="refresh">';
     }
+}
+else{
+    echo '<body onload="alert(\'Veuillez renseigner les champs de connexion\'">';
 }
 
 /*
@@ -104,7 +97,7 @@ if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
                         </tr>
                         <tr>
                             <td>
-                                <input type="submit" name="check" placeholder="Ok" value="OK" onclick="document.location.href='indexAccueil.php'">
+                                <input type="submit" name="check" value="OK">
                             </td>
                         </tr>
                     </tbody>
