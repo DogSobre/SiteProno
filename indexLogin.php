@@ -1,4 +1,4 @@
-<?php include 'index.php'?>
+<?php include 'index.php';?>
 
 <?php
 
@@ -8,8 +8,8 @@ if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $email = PDO::quote($_POST['Collab_Mail']);
 
-    $req = $db->prepare("SELECT * FROM Collab WHERE Collab_Name = :pseudo");
-    $req->execute(array(
+    $req = $db -> prepare("SELECT * FROM Collab WHERE Collab_Name = :pseudo");
+    $req -> execute(array(
         'Collab_Name' => $username));
     $result = $req -> fetch();
 
@@ -90,7 +90,7 @@ if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
                         </tr>
                         <tr>
                             <td>
-                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" required>
+                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" value="<?php if (isset($_POST['Collab_Mail'])) echo htmlentities(trim($_POST['Collab_Mail'])); ?>" required >
                             </td>
                         </tr>
                         <tr>
@@ -98,7 +98,7 @@ if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
                         </tr>
                         <tr>
                             <td>
-                                <input type="password" name="userPassword" placeholder="**********" required>
+                                <input type="password" name="userPassword" placeholder="**********" value="<?php if (isset($_POST['Collab_Password'])) echo htmlentities(trim($_POST['Collab_Password']))?>" required >
 
                             </td>
                         </tr>
