@@ -104,7 +104,7 @@ if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
                         </tr>
                         <tr>
                             <td>
-                                <input type="submit" name="check" placeholder="Ok" value="OK" onclick="document.location.href='indexAccueil.html'">
+                                <input type="submit" name="check" placeholder="Ok" value="OK" onclick="document.location.href='indexAccueil.php'">
                             </td>
                         </tr>
                     </tbody>

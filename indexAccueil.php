@@ -1,3 +1,5 @@
+<?php include 'index.php';?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,7 +26,7 @@
             <div class="conteneurNav">
                 <ul>
                     <li>
-                        <a href="indexAccueil.html" class="topNav">Accueil</a>
+                        <a href="indexAccueil.php" class="topNav">Accueil</a>
                     </li>
                     <li>
                         <a href="indexClassement.html" class="topNav">Classement</a>
