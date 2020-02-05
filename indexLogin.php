@@ -83,7 +83,7 @@ if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
                         </tr>
                         <tr>
                             <td>
-                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" value="<?php if (isset($_POST['Collab_Mail'])) echo htmlentities(trim($_POST['Collab_Mail'])); ?>" required >
+                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" required >
                             </td>
                         </tr>
                         <tr>
@@ -91,7 +91,7 @@ if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
                         </tr>
                         <tr>
                             <td>
-                                <input type="password" name="userPassword" placeholder="**********" value="<?php if (isset($_POST['Collab_Password'])) echo htmlentities(trim($_POST['Collab_Password']))?>" required >
+                                <input type="password" name="userPassword" placeholder="**********" required >
 
                             </td>
                         </tr>
