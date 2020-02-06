@@ -78,13 +78,6 @@ if (isset($_POST['submit'])){
 
         $nbRows = PDOStatement::rowCount($isCorrect);
         if ($nbRows > 0){
-
-            session_start();
-
-            $_SESSION['Collab_Name'] = $username;
-
-            header('location : indexAccueil.php');
-        }
         else{
             echo 'Wrong login/password';
         }

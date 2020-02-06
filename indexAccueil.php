@@ -4,6 +4,11 @@ include 'index.php';
 
 session_start();
 
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: indexLogin.php");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,16 +40,16 @@ session_start();
                         <a href="indexAccueil.php" class="topNav">Accueil</a>
                     </li>
                     <li>
-                        <a href="indexClassement.html" class="topNav">Classement</a>
+                        <a href="indexClassement.php" class="topNav">Classement</a>
                     </li>
                     <li>
-                        <a href="indexCalendrier.html" class="topNav">Calendrier</a>
+                        <a href="indexCalendrier.php" class="topNav">Calendrier</a>
                     </li>
                     <li>
-                        <a href="indexParis.html" class="topNav">Paris</a>
+                        <a href="indexParis.php" class="topNav">Paris</a>
                     </li>
                     <li>
-                        <a href="indexRewards.html" class="topNav">Récompenses</a>
+                        <a href="indexRewards.php" class="topNav">Récompenses</a>
                     </li>
                 </ul>
             </div>
@@ -55,17 +60,17 @@ session_start();
         <aside class="g1">
             <div class="carrousel">
                 <div class="mySlide">
-                    <a href="indexClassement.html" title="classement" target="_blank">
+                    <a href="indexClassement.php" title="classement" target="_blank">
                         <img src="assets/images/forbesc.jpg" name="classement" alt="Classement">
                     </a>
                 </div>
                 <div class="mySlide">
-                    <a href="indexCalendrier.html" title="match du jour" target="_blank">
+                    <a href="indexCalendrier.php" title="match du jour" target="_blank">
                         <img src="assets/images/rencontreJour.jpg" name="match du jour" alt="match_du_jour">
                     </a>
                 </div>
                 <div class="mySlide">
-                    <a href="indexRewards.html" title="récompenses" target="_blank">
+                    <a href="indexRewards.php" title="récompenses" target="_blank">
                         <img src="assets/images/reward.jpg" name="reward" alt="recompense_vainqueurs">
                     </a>
                 </div>

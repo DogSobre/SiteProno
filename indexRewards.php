@@ -1,3 +1,16 @@
+<?php
+
+include 'index.php';
+
+session_start();
+
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: indexLogin.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,7 +18,7 @@
     <meta charset="utf-8">
     <title>Pronostic CSE</title>
     <link rel="icon" href="assets/images/MPlogo.png" />
-    <link rel="stylesheet" type="text/css" href="assets/CSS/styleCalendrier.css">
+    <link rel="stylesheet" type="text/css" href="assets/CSS/styleRewards.css">
 </head>
 
 <body>
@@ -17,7 +30,7 @@
         </div>
 
         <div id="presentationTitre">
-            <h1>Notez les dates pour les prochains matchs</h1>
+            <h1>Consultez les différentes récompenses mises en jeu</h1>
         </div>
 
         <nav>
@@ -27,16 +40,16 @@
                         <a href="indexAccueil.php" class="topNav">Accueil</a>
                     </li>
                     <li>
-                        <a href="indexClassement.html" class="topNav">Classement</a>
+                        <a href="indexClassement.php" class="topNav">Classement</a>
                     </li>
                     <li>
-                        <a href="indexCalendrier.html" class="topNav">Calendrier</a>
+                        <a href="indexCalendrier.php" class="topNav">Calendrier</a>
                     </li>
                     <li>
-                        <a href="indexParis.html" class="topNav">Paris</a>
+                        <a href="indexParis.php" class="topNav">Paris</a>
                     </li>
                     <li>
-                        <a href="indexRewards.html" class="topNav">Récompenses</a>
+                        <a href="indexRewards.php" class="topNav">Récompenses</a>
                     </li>
                 </ul>
             </div>
