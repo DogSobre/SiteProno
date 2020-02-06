@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
-    header("location : indexAccueil.php");
+    header("location: indexAccueil.php");
     exit;
 }
 
@@ -24,12 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == $_POST){
         $sql = "SELECT * FROM Collab WHERE Collab_Mail = :userMail";
 
         if ($stmt = $db -> prepare($sql)){
-            $stmt -> bindParam(":userMail", $paramUsermail, PDO::PARAM_STR);
+            $stmt->bindParam(":userMail", $paramUsermail, PDO::PARAM_STR);
 
             $paramUsermail = trim($_POST["Collab_Mail"]);
-            if ($stmt -> execute()){
+            if ($stmt->execute()){
                 if ($stmt -> rowCount() == 1){
-                    if ($row = $stmt -> fetch()){
+                    if ($row = $stmt->fetch()){
                         $id = $row["idCollab"];
                         $userMail = $row["Collab_Mail"];
                         $hashedPassword = $row["Collab_Password"];
