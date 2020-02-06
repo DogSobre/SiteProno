@@ -5,9 +5,38 @@
 $login = $_POST['Collab_Mail'];
 $password = $_POST['Collab_Password'];
 
+
+if (isset($_POST['submit'])){
+    if (!empty($_POST['Collab_Mail']) && !empty($_POST['Collab_Password'])){
+        $username = PDO::quote($db, $_POST['Collab_Name']);
+        $password = PDO::quote($db, $_POST['Collab_Password']);
+        $mail = PDO::quote($db, $_POST['Collab_Mail']);
+
+        $isCorrect = PDOStatement::query($db , 'SELECT * FROM Collab WHERE Collab_Mail = "$mail" AND Collab_Password = "$password"');
+
+        $nbRows = PDOStatement::rowCount($isCorrect);
+        if ($nbRows > 0){
+
+            session_start();
+
+            $_SESSION['Collab_Name'] = $username;
+
+            header('location : indexAccueil.php');
+        }
+        else{
+            echo 'Wrong login/password';
+        }
+    }
+    else{
+        echo 'Please complete all boxes';
+    }
+}
+
+/*
 if (isset($_POST['Collab_Mail']) && isset($_POST['Collab_Password'])){
 
     if($login == $_POST['Collab_Mail'] && $password == $_POST['Collab_Password']){
+
         session_start();
 
         $_SESSION['Collab_Mail'] = $_POST['Collab_Mail'];
@@ -21,11 +50,13 @@ if (isset($_POST['Collab_Mail']) && isset($_POST['Collab_Password'])){
     }
 }
 else{
-    echo '<body onload="alert(\'Veuillez renseigner les champs de connexion\'">';
+    //echo '<body onload="alert(\'Veuillez renseigner les champs de connexion\'">';
 }
 
+*/
+
 /*
-if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
+if (!emp ty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
     $username = PDO::quote($_POST['Collab_Name']);
     $password = PDO::quote($_POST['Collab_Password']);
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
