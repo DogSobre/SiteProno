@@ -6,8 +6,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
     header("location: indexAccueil.php");
     exit;
 }
-
-require_once "index.php";
+ require_once "index.php";
 
 $userMail = $password = "";
 $userMailErr = $passwordErr = "";
