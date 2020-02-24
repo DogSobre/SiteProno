@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
-    if((isset($_POST["login"]) && $_POST["login"]) && (isset($_POST["password"]) && $_POST["password"])){
+    if((isset($_POST["Collab_Name"]) && $_POST["Collab_Name"]) && (isset($_POST["Collab_Password"]) && $_POST["Collab_Password"])){
 
 
         $dbhost = "localhost";
@@ -12,7 +12,7 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
 
         $db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, $dboption);
 
-        $sql = 'SELECT count(*) FROM Collab WHERE Collab_Mail= "'.PDO::quote($_POST['Collab_Mail']).'" AND Collab_Password="'.PDO::quote($_POST['Collab_Password']).'"';
+        $sql = 'SELECT count(*) FROM Collab WHERE Collab_Name= "'.PDO::quote($_POST['Collab_Name']).'" AND Collab_Password="'.PDO::quote($_POST['Collab_Password']).'"';
         $req = PDO::query($sql) or die ('Error ! <br/>'.$sql.'<br/>'.PDO::errorInfo());
         $data = PDOStatement::fetch($req);
 
@@ -22,7 +22,7 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
     // If we have a reply, the user is correct and he is a member
         if ($data[0] == 1){
             session_start();
-            $_SESSION['login'] = $_POST['login'];
+            $_SESSION['Collab_Name'] = $_POST['Collab_Name'];
             header('Location: indexAccueil.php');
             exit();
         }
@@ -33,8 +33,9 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
         else{
             $err = 'Error in Database. Many accounts have the same login connction';
         }
-
-
+    }
+    else{
+        $err = 'One of the fileds is empty';
     }
 }
 
@@ -65,7 +66,7 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
     </header>
 
     <section class="loginContainer">
-        <form>
+        <form action="indexLogin.php" method="post">
             <div id="loginPres">
                 <ul class="presentation">
                     Connectez-vous au site de Pronos du CSE et tentez de gagner des lots en faisant partie des premiers
@@ -80,7 +81,7 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
                         </tr>
                         <tr>
                             <td>
-                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" required >
+                                <input type="text" name="login" value="<?php if (isset($_POST["login"])) echo htmlentities(trim($_POST["login"])); ?>" placeholder="collaborateur@carrefour.com" required >
                             </td>
                         </tr>
                         <tr>
@@ -88,8 +89,7 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
                         </tr>
                         <tr>
                             <td>
-                                <input type="password" name="userPassword" placeholder="**********" required >
-
+                                <input type="password" name="pass" value="<?php if (isset($_POST["password"])) echo htmlentities(trim($_POST["password"])); ?>" placeholder="**********" required >
                             </td>
                         </tr>
                         <tr>
@@ -105,6 +105,9 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
     <footer>
         <p>© 2019-2020 Market Pay & Market Pay Tech</p>
     </footer>
+    <?php
+    if (isset($erreur)) echo '<br /><br />',$erreur;
+    ?>
 </body>
 
 </html>
