@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'index.php';
 
 if (isset($_POST["Connection"]) && $_POST["Connection"] == "Connection"){
@@ -15,13 +15,12 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == "Connection"){
 
     // If we have a reply, the user is correct and he is a member.
         if ($data[0] == 1){
-            session_start();
             $_SESSION["Collab_Name"] = $_POST["Collab_Name"];
             $_SESSION["Collab_Password"] = $_POST["Collab_Password"];
             header("Location: indexAccueil.php");
             exit();
         }
-    // If we don't have any reply, whether the user has been a mistake in the login or in the password.
+    // If we don't have any reply, the user did a mistake in the login or in the password.
         else if ($data[0] == 0){
             $err = "Account was not found";
         }
