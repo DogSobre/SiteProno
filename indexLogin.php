@@ -2,12 +2,12 @@
 
 include 'index.php';
 
-if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
+if (isset($_POST["Connection"]) && $_POST["Connection"] == "Connection"){
     if((isset($_POST["Collab_Name"]) && $_POST["Collab_Name"]) && (isset($_POST["Collab_Password"]) && $_POST["Collab_Password"])){
 
     // Prepare SQL request.
-        $sql = 'SELECT * FROM Collab WHERE Collab_Name="'.PDO::quote($_POST['Collab_Name']).'" AND Collab_Password="'.PDO::quote($_POST['Collab_Password']).'"';
-        $req = PDO::query($sql) or die ('Error ! <br/>'.$sql.'<br/>'.PDO::errorInfo());
+        $sql = 'SELECT * FROM Collab WHERE Collab_Name="'.PDO::quote($_POST["Collab_Name"]).'" AND Collab_Password="'.PDO::quote($_POST["Collab_Password"]).'"';
+        $req = PDO::query($sql) or die ("Error ! <br/>".$sql."<br/>".PDO::errorInfo());
         $data = PDOStatement::fetch($req);
 
         PDOStatement::closeCursor($req);
@@ -16,20 +16,21 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
     // If we have a reply, the user is correct and he is a member.
         if ($data[0] == 1){
             session_start();
-            $_SESSION['Collab_Name'] = $_POST['Collab_Name'];
-            header('Location: indexAccueil.php');
+            $_SESSION["Collab_Name"] = $_POST["Collab_Name"];
+            $_SESSION["Collab_Password"] = $_POST["Collab_Password"];
+            header("Location: indexAccueil.php");
             exit();
         }
     // If we don't have any reply, whether the user has been a mistake in the login or in the password.
         else if ($data[0] == 0){
-            $err = 'Account was not found';
+            $err = "Account was not found";
         }
         else{
-            $err = 'Error in Database. Many accounts have the same login connction';
+            $err = "Error in Database. Many accounts have the same login connection";
         }
     }
     else{
-        $err = 'One of the fileds is empty';
+        $err = "One of the fileds is empty";
     }
 }
 
