@@ -2,12 +2,15 @@
 
 include 'index.php';
 
+    //Init session.
 session_start();
 
+    //Check if the user is already connected and redirect him to login page if it's not true.
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: indexLogin.php");
     exit;
 }
+
 
 ?>
 

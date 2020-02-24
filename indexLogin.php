@@ -1,11 +1,15 @@
 <?php
 
+    //Init session.
 session_start();
 
+    //Check if the user is already connected and redirect him to welcome page if it's true.
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
     header("location: indexAccueil.php");
     exit;
 }
+
+    //Configuration file to the Database.
  require_once "index.php";
 
 $userMail = $password = "";
@@ -27,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == $_POST){
 
             $paramUsermail = trim($_POST["Collab_Mail"]);
             if ($stmt->execute()){
-                if ($stmt -> rowCount() == 1){
+                if ($stmt->rowCount() == 1){
                     if ($row = $stmt->fetch()){
                         $id = $row["idCollab"];
                         $userMail = $row["Collab_Mail"];
@@ -59,76 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == $_POST){
     }
     unset($db);
 }
-
-
-/*
-
-$login = $_POST['Collab_Mail'];
-$password = $_POST['Collab_Password'];
-
-
-if (isset($_POST['submit'])){
-    if (!empty($_POST['Collab_Mail']) && !empty($_POST['Collab_Password'])){
-        $username = PDO::quote($db, $_POST['Collab_Name']);
-        $password = PDO::quote($db, $_POST['Collab_Password']);
-        $mail = PDO::quote($db, $_POST['Collab_Mail']);
-
-        $isCorrect = PDOStatement::query($db , 'SELECT * FROM Collab WHERE Collab_Mail = "$mail" AND Collab_Password = "$password"');
-
-        $nbRows = PDOStatement::rowCount($isCorrect);
-        if ($nbRows > 0){
-        else{
-            echo 'Wrong login/password';
-        }
-    }
-    else{
-        echo 'Please complete all boxes';
-    }
-}
-*/
-
-/*
-if (isset($_POST['Collab_Mail']) && isset($_POST['Collab_Password'])){
-
-    if($login == $_POST['Collab_Mail'] && $password == $_POST['Collab_Password']){
-
-        session_start();
-
-        $_SESSION['Collab_Mail'] = $_POST['Collab_Mail'];
-        $_SESSION['Collab_Password'] = $_POST['Collab_Password'];
-
-        header('location : indexAccueil.php');
-    }
-    else{
-        echo '<body onload="alert(\'Membre non reconnu\'">';
-        echo '<meta http-equiv="refresh">';
-    }
-}
-else{
-    //echo '<body onload="alert(\'Veuillez renseigner les champs de connexion\'">';
-}
-
-*/
-
-/*
-if (!empty($_POST['Collab_Name']) && !empty($_POST['Collab_Password'])) {
-    $username = PDO::quote($_POST['Collab_Name']);
-    $password = PDO::quote($_POST['Collab_Password']);
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $email = PDO::quote($_POST['Collab_Mail']);
-
-    $isUsername = PDO::query("SELECT * FROM Collab WHERE Collab_Name = '" . $username . "'");
-    $isPasswordCorrect = password_verify($password, $hashedPassword);
-
-    if ($isPasswordCorrect == true && $isUsername == true) {
-        //header('Location : indexAccuueil.html');
-        echo('Bienvenue');
-    } else {
-        echo('Utilisateur ou Mot De Passe incorrect');
-    }
-}
-*/
 ?>
+
 <!DOCTYPE>
 <html lang="fr">
 
