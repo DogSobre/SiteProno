@@ -46,8 +46,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <a href="indexCalendrier.php" class="topNav">Calendrier</a>
                     </li>
                     <li>
-                        <a href="indexParis.php" class="topNav">Paris</a>
-                    </li>
                     <li>
                         <a href="indexRewards.php" class="topNav">Récompenses</a>
                     </li>
