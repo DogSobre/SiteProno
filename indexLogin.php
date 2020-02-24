@@ -83,7 +83,7 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="login" value="<?php if (isset($_POST["login"])) echo htmlentities(trim($_POST["login"])); ?>" placeholder="collaborateur@carrefour.com" required >
+                                <input type="text" name="login" value="<?php if (isset($_POST["Collab_Name"])) echo htmlentities(trim($_POST["Collab_Name"])); ?>" placeholder="collaborateur@carrefour.com" required >
                             </td>
                         </tr>
                         <tr>
@@ -91,7 +91,7 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
                         </tr>
                         <tr>
                             <td>
-                                <input type="password" name="pass" value="<?php if (isset($_POST["password"])) echo htmlentities(trim($_POST["password"])); ?>" placeholder="**********" required >
+                                <input type="password" name="pass" value="<?php if (isset($_POST["Collab_Password"])) echo htmlentities(trim($_POST["Collab_Password"])); ?>" placeholder="********" required >
                             </td>
                         </tr>
                         <tr>
