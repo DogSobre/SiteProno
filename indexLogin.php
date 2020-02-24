@@ -1,68 +1,43 @@
 <?php
 
-    //Init session.
-session_start();
+if (isset($_POST["Connection"]) && $_POST["Connection"] == 'Connection'){
+    if((isset($_POST["login"]) && $_POST["login"]) && (isset($_POST["password"]) && $_POST["password"])){
 
-    //Check if the user is already connected and redirect him to welcome page if it's true.
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
-    header("location: indexAccueil.php");
-    exit;
-}
 
-    //Configuration file to the Database.
- require_once "index.php";
+        $dbhost = "localhost";
+        $dbusername = "root";
+        $dbpassword = "root";
+        $dbname = "sitePronoTest";
+        $dboption = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$userMail = $password = "";
-$userMailErr = $passwordErr = "";
+        $db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, $dboption);
 
-if ($_SERVER["REQUEST_METHOD"] == $_POST){
-    if (empty(trim($_POST["Collab_Mail"]))){
-        $userMailErr = "Please enter email";
-    }
-    else{
-        $userMail = trim($_POST["Collab_Mail"]);
-    }
+        $sql = 'SELECT count(*) FROM Collab WHERE Collab_Mail= "'.PDO::quote($_POST['Collab_Mail']).'" AND Collab_Password="'.PDO::quote($_POST['Collab_Password']).'"';
+        $req = PDO::query($sql) or die ('Error ! <br/>'.$sql.'<br/>'.PDO::errorInfo());
+        $data = PDOStatement::fetch($req);
 
-    if (empty($userMailErr) && empty($passwordErr)){
-        $sql = "SELECT * FROM Collab WHERE Collab_Mail = :userMail";
+        PDOStatement::closeCurdor($req);
+        $db = null;
 
-        if ($stmt = $db -> prepare($sql)){
-            $stmt->bindParam(":userMail", $paramUsermail, PDO::PARAM_STR);
-
-            $paramUsermail = trim($_POST["Collab_Mail"]);
-            if ($stmt->execute()){
-                if ($stmt->rowCount() == 1){
-                    if ($row = $stmt->fetch()){
-                        $id = $row["idCollab"];
-                        $userMail = $row["Collab_Mail"];
-                        $hashedPassword = $row["Collab_Password"];
-                        if (password_verify($password, $hashedPassword)){
-
-                            session_start();
-
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["idCollab"] = $id;
-                            $_SESSION["Collab_Mail"] = $userMail;
-                            header("location = indexAccueil.php");
-
-                        }
-                        else{
-                            $passwordErr = "Unvalid Password";
-                        }
-                    }
-                }
-                else{
-                    $userMailErr = "Unvalid eMail";
-                }
-            }
-            else{
-                echo "Something went wrong. Please try again.";
-            }
+    // If we have a reply, the user is correct and he is a member
+        if ($data[0] == 1){
+            session_start();
+            $_SESSION['login'] = $_POST['login'];
+            header('Location: indexAccueil.php');
+            exit();
         }
-        unset($stmt);
+    // If we don't have any reply, whether the user has been a mistake in the login or in the password.
+        else if ($data[0] == 0){
+            $err = 'Account not found';
+        }
+        else{
+            $err = 'Error in Database. Many accounts have the same login connction';
+        }
+
+
     }
-    unset($db);
 }
+
 ?>
 
 <!DOCTYPE>
@@ -105,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == $_POST){
                         </tr>
                         <tr>
                             <td>
-                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" value="<?php echo $userMail; ?>" required >
+                                <input type="email" name="userMail" placeholder="collaborateur@carrefour.com" required >
                             </td>
                         </tr>
                         <tr>
