@@ -23,13 +23,14 @@ if (isset($_POST["Connection"]) && $_POST["Connection"] == "Connection"){
     // If we don't have any reply, the user did a mistake in the login or in the password.
         else if ($data[0] == 0){
             $err = "Account was not found";
+            alert($err);
         }
         else{
             $err = "Error in Database. Many accounts have the same login connection";
         }
     }
     else{
-        $err = "One of the fileds is empty";
+        $err = "One of the fields is empty";
     }
 }
 
