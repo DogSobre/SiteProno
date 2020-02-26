@@ -22,7 +22,7 @@ if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
             exit();
         }
 
-    // If we don't have any reply, the user did a mistake in the login or in the password.
+    // If we don't have any reply, the user did mistakes in the login or in the password.
         else if ($data[0] == 0){
             $err = "Account was not found";
             echo($err);
