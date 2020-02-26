@@ -2,7 +2,7 @@
 session_start();
 include 'index.php';
 
-if (isset($_POST["login"]) && $_POST["login"] == "connection"){
+if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
     if((isset($_POST["login"]) && $_POST["login"]) && (isset($_POST["pass"]) && $_POST["pass"])){
 
     // Prepare SQL request.
@@ -21,22 +21,22 @@ if (isset($_POST["login"]) && $_POST["login"] == "connection"){
             echo('hello world');
             exit();
         }
+
     // If we don't have any reply, the user did a mistake in the login or in the password.
         else if ($data[0] == 0){
             $err = "Account was not found";
-            echo('hello world');
+            echo($err);
         }
         else{
             $err = "Error in Database. Many accounts have the same login connection";
-            echo('hello world');
+            echo($err);
         }
     }
     else{
         $err = "One of the fields is empty";
-        echo('hello world');
+        echo($err);
     }
 }
-
 ?>
 
 <!DOCTYPE>
