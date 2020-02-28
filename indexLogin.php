@@ -1,6 +1,35 @@
 <?php
 session_start();
-include 'index.php';
+//include 'index.php';
+
+if(isset($_POST['username']) && isset($_POST['password'])){
+    $dbhost = "localhost";
+    $dbusername = "root";
+    $dbpassword = "root";
+    $dbname = "sitePronoTest";
+    $dboption = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, $dboption) or die('Could not connect to database');
+
+    $username = PDO::quote($db, htmlentities($_POST['username']));
+    $password = PDO::quote($db, htmlentities($_POST['password']));
+
+    if ($username !== '' && $password !== ''){
+        $req = "SELECT count(*) FROM Collab WHERE Collab_Name = '".$username."' AND Collab_Password = '".$password."'";
+        $exe_req = PDO::query($db, $req);
+        $rep = PDOStatement::fetch($exe_req);
+        $count = $rep["count(*)"];
+        if ($count != 0){
+            $_SESSION["username"] = $username;
+            header("Location: indexLogin.php");
+        }
+        else{
+            header('Location: indexLogin.php?erreur=1');
+        }
+    }
+
+
+}
+
 
 /*
 if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
@@ -38,7 +67,7 @@ if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
         echo($err);
     }
 }
-*/
+
 
 if (isset($_POST["Collab_Name"]) && $_POST["Collab_Name"] == "Collab_Name"){
     if (empty($_POST["login"]) || empty($_POST["login"])){
@@ -68,7 +97,7 @@ if (isset($_POST["Collab_Name"]) && $_POST["Collab_Name"] == "Collab_Name"){
         echo "Une erreur c'est produite, veuillez réessayer";
     }
 
-}
+}*/
 ?>
 
 <!DOCTYPE>
