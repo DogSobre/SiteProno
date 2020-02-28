@@ -2,6 +2,7 @@
 session_start();
 include 'index.php';
 
+/*
 if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
     if((isset($_POST["login"]) && $_POST["login"]) && (isset($_POST["pass"]) && $_POST["pass"])){
 
@@ -36,6 +37,37 @@ if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
         $err = "One of the fields is empty";
         echo($err);
     }
+}
+*/
+
+if (isset($_POST["Collab_Name"]) && $_POST["Collab_Name"] == "Collab_Name"){
+    if (empty($_POST["login"]) || empty($_POST["login"])){
+        echo 'Un des champs est vide';
+    }
+    else if (!empty($_POST["login"]) && !empty($_POST["login"])){
+        $sql = 'SELECT * FROM Collab WHERE Collab_Name="'.PDO::quote($_POST["login"]).'" AND Collab_Password="'.PDO::quote($_POST["pass"]).'"';
+        $req = PDO::query($sql) or die ("Error ! <br/>".$sql."<br/>".PDO::errorInfo());
+        $data = PDOStatement::fetch($req);
+
+
+        if ($data[0] == 1){
+            $_SESSION['Collab_Name'] = $_POST['Collab_Name'];
+            $_SESSION['Collab_Password'] = $_POST['Collab_Password'];
+            echo"Connection au serveur";
+            header("Location: indexAccueil.php");
+            exit();
+        }
+        else if ($data[0] == 0){
+            echo "Une erreur c\'est produite, veuillez réessayer";
+        }
+
+        PDOStatement::closeCursor($req);
+        $db = null;
+    }
+    else{
+        echo "Une erreur c'est produite, veuillez réessayer";
+    }
+
 }
 ?>
 
@@ -92,7 +124,7 @@ if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
                         </tr>
                         <tr>
                             <td>
-                                <input type="submit" name="connection" value="Ok">
+                                <input type="submit" name="connection" value="Ok" >
                             </td>
                         </tr>
                     </tbody>
