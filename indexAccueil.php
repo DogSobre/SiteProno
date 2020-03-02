@@ -6,7 +6,13 @@ include 'index.php';
 session_start();
 
     //Check if the user is already connected and redirect him to login page if it's not true.
-if (!isset($_SESSION["login"]) || $_SESSION["pass"] !== true){
+
+$_SESSION["Collab_Name"] = $_POST["login"];
+$login = $_SESSION['Collab_Name'];
+$_SESSION["Collab_Password"] = $_POST["password"];
+$password = $_SESSION['Collab_Password'];
+
+if (!empty($login) || !empty($password) !== true){
     header("location: indexLogin.php");
     exit;
 }
