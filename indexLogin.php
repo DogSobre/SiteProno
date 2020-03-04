@@ -40,12 +40,6 @@ include 'index.php';
     }
 }*/
 
-$sql = "SELECT * FROM Collab WHERE Collab_Name ='".PDO::quote["login"]."' AND Collab_Password='".PDO::quote["password"]."'";
-$req = PDO::query($sql) or die();
-$data = PDOStatement::fetch($req);
-
-$login = $_POST['Collab_Name'];
-$password = $_POST['Collab_Password'];
 
 if (!empty($_POST["login"]) && !empty($_POST["password"])){
 
@@ -54,6 +48,12 @@ if (!empty($_POST["login"]) && !empty($_POST["password"])){
     $data = PDOStatement::fetch($req);*/
 
 
+    $sql = "SELECT * FROM Collab WHERE Collab_Name ='".PDO::quote["login"]."' AND Collab_Password='".PDO::quote["password"]."'";
+    $req = PDO::query($sql) or die();
+    $data = PDOStatement::fetch($req);
+
+    $login = $_POST['Collab_Name'];
+    $password = $_POST['Collab_Password'];
 
     $_SESSION["Collab_Name"] = $login;
     //$_SESSION["Collab_Name"] = $_POST["login"];
