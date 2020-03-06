@@ -4,7 +4,7 @@ include 'index.php';
 
 
 
-/*if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
+/**/if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
     if((isset($_POST["login"]) && $_POST["login"]) && (isset($_POST["pass"]) && $_POST["pass"])){
 
     // Prepare SQL request.
@@ -38,7 +38,7 @@ include 'index.php';
         $err = "One of the fields is empty";
         echo($err);
     }
-}*/
+}/*
 
 
 if (!empty($_POST["login"]) && !empty($_POST["password"])){
@@ -47,20 +47,20 @@ if (!empty($_POST["login"]) && !empty($_POST["password"])){
     $req = PDO::query($sql) or die();
     $data = PDOStatement::fetch($req);
 
-    $login = $_POST['Collab_Name'];
-    $password = $_POST['Collab_Password'];
+    //$login = $_POST['Collab_Name'];
+    //$password = $_POST['Collab_Password'];
 
-    $_SESSION["Collab_Name"] = $login;
-    //$_SESSION["Collab_Name"] = $_POST["login"];
-    //$login = $_SESSION['Collab_Name'];
-    $_SESSION["Collab_Password"] = $password;
-    //$_SESSION["Collab_Password"] = $_POST["password"];
-    //$password = $_SESSION['Collab_Password'];
+    //$_SESSION["Collab_Name"] = $login;
+    $_SESSION["Collab_Name"] = $_POST["login"];
+    $login = $_SESSION['Collab_Name'];
+    //$_SESSION["Collab_Password"] = $password;
+    $_SESSION["Collab_Password"] = $_POST["password"];
+    $password = $_SESSION['Collab_Password'];
 
 
     if ($data[0] == 0){
-        $_SESSION[$login];
-        $_SESSION[$password];
+        $login;
+        $password;
         header("Location: indexAccueil.php");
     }
     elseif ($data[0]== 1){
@@ -73,7 +73,7 @@ else{
 }
 
 
-/*/
+
 
 if (isset($_POST["Collab_Name"]) && $_POST["Collab_Name"] == "Collab_Name"){
     if (empty($_POST["login"]) || empty($_POST["login"])){
@@ -146,7 +146,7 @@ if (isset($_POST["Collab_Name"]) && $_POST["Collab_Name"] == "Collab_Name"){
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="login" value="<?php if (!empty($login)) echo htmlentities(trim($login)); ?>" placeholder="collaborateur@carrefour.com"  >
+                                <input type="text" name="login" value="<?php if (!empty($_POST["login"])) echo htmlentities(trim($_POST["login"])); ?>" placeholder="collaborateur@carrefour.com"  >
                             </td>
                         </tr>
                         <tr>
@@ -154,7 +154,7 @@ if (isset($_POST["Collab_Name"]) && $_POST["Collab_Name"] == "Collab_Name"){
                         </tr>
                         <tr>
                             <td>
-                                <input type="password" name="pass" value="<?php if (!empty($password)) echo htmlentities(trim($password)); ?>" placeholder="********"  >
+                                <input type="password" name="pass" value="<?php if (!empty($_POST["password"])) echo htmlentities(trim($_POST["password"])); ?>" placeholder="********"  >
                             </td>
                         </tr>
                         <tr>

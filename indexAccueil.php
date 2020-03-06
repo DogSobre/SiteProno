@@ -1,6 +1,7 @@
 <?php
 
 include 'index.php';
+include 'indexLogin.php';
 
     //Init session.
 session_start();
@@ -12,7 +13,7 @@ $login = $_SESSION['Collab_Name'];
 $_SESSION["Collab_Password"] = $_POST["password"];
 $password = $_SESSION['Collab_Password'];
 
-if (!empty($login) || !empty($password) !== true){
+if (!empty($_SESSION["Collab_Name"]) || !empty($_SESSION["Collab_Password"]) !== true){
     header("location: indexLogin.php");
     exit;
 }
