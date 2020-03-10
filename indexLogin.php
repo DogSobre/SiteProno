@@ -1,7 +1,6 @@
 <?php
-session_start();
 include 'index.php';
-
+session_start();
 
 
 /**/if (isset($_POST["login"]) && $_POST["login"] == "Ok"){
@@ -18,7 +17,9 @@ include 'index.php';
     // If we have a reply, the user is correct and he is redirected to the next page.
         if ($data[0] == 1){
             $_SESSION["Collab_Name"] = $_POST["Collab_Name"];
+            $login = $_SESSION["Collab_Name"];
             $_SESSION["Collab_Password"] = $_POST["Collab_Password"];
+            $password = $_SESSION["Collab_Password"];
             header("Location: indexAccueil.php");
             echo('hello world');
             exit();
